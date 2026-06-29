@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analisis Data dan Peluang - Fase F</title>
+    <!-- Catatan Auditor: Untuk 100% Offline murni, unduh tailwind css dan ganti baris di bawah dengan <link rel="stylesheet" href="tailwind.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; background-color: #f3f4f6; }
+        /* Menggunakan system-ui font agar tidak perlu koneksi internet untuk load font */
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f3f4f6; }
         
         /* Custom Scrollbar for Content Areas */
         ::-webkit-scrollbar { width: 8px; }
@@ -28,18 +28,28 @@
     <!-- 16:9 Main Container -->
     <div class="w-full max-w-6xl aspect-video bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col relative border border-gray-200">
         
-        <!-- Header -->
-        <header class="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-md z-10 shrink-0">
+        <!-- Header (Tema Biru) -->
+        <header class="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md z-10 shrink-0">
             <div class="flex items-center gap-3">
-                <i data-lucide="bar-chart-2" class="w-8 h-8"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
                 <h1 class="text-xl font-bold">Matematika SMA Kelas XI Fase F</h1>
             </div>
             <nav class="flex gap-2">
-                <button onclick="navigate('home')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="home" class="w-4 h-4"></i> Beranda</button>
-                <button onclick="navigate('tujuan')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="target" class="w-4 h-4"></i> Tujuan</button>
-                <button onclick="navigate('materi')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4"></i> Materi</button>
-                <button onclick="navigate('bermain')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="gamepad-2" class="w-4 h-4"></i> Bermain</button>
-                <button onclick="navigate('berlatih')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="pen-tool" class="w-4 h-4"></i> Berlatih</button>
+                <button onclick="navigate('home')" class="px-4 py-2 hover:bg-blue-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Beranda
+                </button>
+                <button onclick="navigate('tujuan')" class="px-4 py-2 hover:bg-blue-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Tujuan
+                </button>
+                <button onclick="navigate('materi')" class="px-4 py-2 hover:bg-blue-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Materi
+                </button>
+                <button onclick="navigate('bermain')" class="px-4 py-2 hover:bg-blue-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg> Bermain
+                </button>
+                <button onclick="navigate('berlatih')" class="px-4 py-2 hover:bg-blue-700 rounded-lg transition text-sm font-medium flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg> Berlatih
+                </button>
             </nav>
         </header>
 
@@ -48,33 +58,33 @@
             
             <!-- HOME PAGE -->
             <div id="page-home" class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 fade-in">
-                <div class="bg-indigo-100 p-6 rounded-full mb-6">
-                    <i data-lucide="pie-chart" class="w-20 h-20 text-indigo-600"></i>
+                <div class="bg-blue-100 p-6 rounded-full mb-6 shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
                 </div>
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Analisis Data dan Peluang</h2>
                 <p class="text-xl text-gray-600 mb-2">Statistika Data Bivariat, Diagram Pencar & Regresi Linier</p>
                 <p class="text-md text-gray-500 mb-8 max-w-2xl">Mari belajar mengidentifikasi dan memodelkan hubungan antar variabel melalui media interaktif ini.</p>
-                <button onclick="navigate('tujuan')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition transform hover:-translate-y-1">Mulai Belajar</button>
+                <button onclick="navigate('tujuan')" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform hover:-translate-y-1">Mulai Belajar</button>
             </div>
 
             <!-- TUJUAN PEMBELAJARAN PAGE -->
             <div id="page-tujuan" class="absolute inset-0 flex flex-col items-center justify-center p-10 hidden fade-in bg-white">
-                <div class="max-w-4xl w-full bg-indigo-50 border-l-4 border-indigo-500 p-8 rounded-r-xl shadow-sm">
+                <div class="max-w-4xl w-full bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-xl shadow-sm">
                     <div class="flex items-center gap-3 mb-6">
-                        <i data-lucide="target" class="w-8 h-8 text-indigo-600"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         <h2 class="text-3xl font-bold text-gray-800">Tujuan Pembelajaran</h2>
                     </div>
                     <ul class="space-y-4 text-lg text-gray-700 list-none">
                         <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             <span>Melakukan proses penyelidikan statistika untuk hubungan asosiasi antara dua variabel.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             <span>Mengidentifikasi dan menjelaskan asosiasi antara dua variabel kategorikal (kualitatif) dan antara dua variabel numerikal (kuantitatif).</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-500 shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             <span>Memperkirakan model linear terbaik (best fit) pada data numerikal (kuantitatif).</span>
                         </li>
                     </ul>
@@ -86,12 +96,12 @@
                 <!-- Kiri: Materi (Scrollable) -->
                 <div class="w-1/2 h-full bg-white p-8 overflow-y-auto border-r border-gray-200">
                     <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2 border-b pb-4">
-                        <i data-lucide="book-open" class="text-indigo-600"></i> Uraian Materi
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Uraian Materi
                     </h2>
                     
                     <div class="space-y-8">
                         <section>
-                            <h3 class="text-xl font-bold text-indigo-700 mb-2">1. Statistika Data Bivariat</h3>
+                            <h3 class="text-xl font-bold text-blue-700 mb-2">1. Statistika Data Bivariat</h3>
                             <p class="text-gray-700 leading-relaxed mb-2 text-justify">
                                 Data bivariat adalah data yang diamati terdiri atas dua variabel. Tujuan utama mempelajari data bivariat adalah untuk melihat apakah ada hubungan (asosiasi) antara kedua variabel tersebut. 
                             </p>
@@ -99,13 +109,13 @@
                                 <li><b>Variabel Bebas (Independen/X):</b> Variabel yang memengaruhi.</li>
                                 <li><b>Variabel Terikat (Dependen/Y):</b> Variabel yang dipengaruhi.</li>
                             </ul>
-                            <div class="mt-3 text-sm bg-indigo-50 p-3 rounded-lg text-indigo-900 border border-indigo-100">
+                            <div class="mt-3 text-sm bg-blue-50 p-3 rounded-lg text-blue-900 border border-blue-100">
                                 <b>Catatan Penting:</b> Analisis asosiasi dapat dilakukan antara dua <b>variabel kategorikal/kualitatif</b> (contoh: jenis kelamin dan hobi) maupun antara dua <b>variabel numerikal/kuantitatif</b> (contoh: jam belajar dan nilai ujian).
                             </div>
                         </section>
 
                         <section>
-                            <h3 class="text-xl font-bold text-indigo-700 mb-2">2. Diagram Pencar (Scatter Plot)</h3>
+                            <h3 class="text-xl font-bold text-blue-700 mb-2">2. Diagram Pencar (Scatter Plot)</h3>
                             <p class="text-gray-700 leading-relaxed mb-2 text-justify">
                                 Diagram pencar adalah grafik yang menunjukkan titik-titik koordinat pada sumbu X dan sumbu Y untuk melihat pola hubungan antara dua variabel kuantitatif.
                             </p>
@@ -118,22 +128,22 @@
                         </section>
 
                         <section>
-                            <h3 class="text-xl font-bold text-indigo-700 mb-2">3. Regresi Linier</h3>
+                            <h3 class="text-xl font-bold text-blue-700 mb-2">3. Regresi Linier</h3>
                             <p class="text-gray-700 leading-relaxed mb-2 text-justify">
                                 Regresi linier adalah metode statistik yang digunakan untuk memodelkan hubungan antara dua variabel dengan mencocokkan persamaan linier ke data yang diamati.
                             </p>
                             <p class="text-gray-700 leading-relaxed mb-2 text-justify">
                                 Tujuannya adalah menemukan <b>Garis Best Fit</b> (garis kecocokan terbaik), yaitu garis lurus yang mewakili tren kumpulan data pada diagram pencar dengan jarak penyimpangan (residu) terkecil.
                             </p>
-                            <div class="bg-gray-100 p-4 rounded-lg font-mono text-center text-lg text-indigo-900 border border-gray-300">
+                            <div class="bg-gray-100 p-4 rounded-lg font-mono text-center text-lg text-blue-900 border border-gray-300">
                                 <b>Persamaan: </b> ŷ = a + bx
                             </div>
                             <p class="text-sm text-gray-600 mt-2">Keterangan:<br> ŷ = Prediksi variabel terikat, a = Titik potong sumbu y, b = Gradien/kemiringan, x = Variabel bebas.</p>
                         </section>
 
-                        <!-- FITUR BARU: CONTOH DATA INTERAKTIF -->
+                        <!-- CONTOH DATA INTERAKTIF -->
                         <section>
-                            <h3 class="text-xl font-bold text-indigo-700 mb-2">4. Contoh Data Praktik</h3>
+                            <h3 class="text-xl font-bold text-blue-700 mb-2">4. Contoh Data Praktik</h3>
                             <p class="text-gray-700 leading-relaxed mb-4 text-justify text-sm">
                                 Di bawah ini adalah contoh kumpulan data numerikal. Kamu dapat menggunakan data ini untuk dipraktikkan membuat diagram pencar pada simulasi interaktif (Canva) di sebelah kanan!
                             </p>
@@ -143,8 +153,8 @@
                                         <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                                             <tr>
                                                 <th class="px-4 py-3">No</th>
-                                                <th class="px-4 py-3">X (Lama Belajar, jam)</th>
-                                                <th class="px-4 py-3">Y (Nilai Ujian)</th>
+                                                <th class="px-4 py-3">X (Lama Belajar)</th>
+                                                <th class="px-4 py-3">Y (Nilai)</th>
                                             </tr>
                                         </thead>
                                         <tbody id="data-table-body">
@@ -169,34 +179,41 @@
                     <div class="flex-1 rounded-xl bg-white flex flex-col relative overflow-hidden shadow-md border border-gray-200">
                         
                         <!-- Embed Iframe Canva -->
-                        <iframe loading="lazy" class="w-full h-full absolute inset-0 border-none" src="https://www.canva.com/design/DAHN6vV8v2Q/hxp4zaOgIZn4QSp02xqDww/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                        <iframe id="canva-iframe" loading="lazy" class="w-full h-full absolute inset-0 border-none" src="https://www.canva.com/design/DAHN6vV8v2Q/hxp4zaOgIZn4QSp02xqDww/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
                         
+                        <!-- Layar Peringatan Offline (Hanya muncul jika internet mati) -->
+                        <div id="offline-message" class="hidden absolute inset-0 bg-gray-50 flex-col items-center justify-center p-8 text-center border-4 border-dashed border-gray-300 m-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"></line><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path><path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                            <h4 class="text-xl font-bold text-gray-700">Koneksi Internet Terputus</h4>
+                            <p class="text-sm text-gray-500 mt-2">Simulasi visual Canva membutuhkan akses internet.<br><br>Gunakan data tabel di samping kiri untuk mempraktikkan pembuatan Diagram Pencar secara mandiri di buku catatan Anda.</p>
+                        </div>
+
                     </div>
                     
                     <!-- Credit & Link Asli -->
                     <div class="text-center mt-3 text-xs text-gray-500">
-                        <a href="https://www.canva.com/design/DAHN6vV8v2Q/hxp4zaOgIZn4QSp02xqDww/view?utm_content=DAHN6vV8v2Q&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener" class="text-indigo-600 font-medium hover:underline">Salinan dari Aktivitas Interaktif Analisis Data Bivariat: Diagram Pencar & Regresi Linear</a> oleh Fitri Masfupah
+                        <a href="https://www.canva.com/design/DAHN6vV8v2Q/hxp4zaOgIZn4QSp02xqDww/view?utm_content=DAHN6vV8v2Q&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener" class="text-blue-600 font-medium hover:underline">Salinan dari Aktivitas Interaktif Analisis Data Bivariat</a> oleh Fitri Masfupah
                     </div>
                 </div>
             </div>
 
-            <!-- KEGIATAN BERMAIN PAGE -->
-            <div id="page-bermain" class="absolute inset-0 flex flex-col hidden fade-in bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-indigo-50">
+            <!-- KEGIATAN BERMAIN PAGE (Tema Oren) -->
+            <div id="page-bermain" class="absolute inset-0 flex flex-col hidden fade-in bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-orange-50">
                 <div class="flex-1 flex flex-col items-center justify-center p-8 max-w-4xl mx-auto w-full relative">
-                    <div class="bg-white w-full rounded-2xl shadow-xl p-8 border-t-8 border-pink-400 relative">
-                        <div class="absolute -top-6 right-8 bg-pink-400 text-white px-4 py-1 rounded-full font-bold shadow-md">Game Mode</div>
+                    <div class="bg-white w-full rounded-2xl shadow-xl p-8 border-t-8 border-orange-500 relative">
+                        <div class="absolute -top-6 right-8 bg-orange-500 text-white px-4 py-1 rounded-full font-bold shadow-md">Game Mode</div>
                         
                         <div id="bermain-intro" class="text-center">
-                            <i data-lucide="joystick" class="w-16 h-16 text-pink-500 mx-auto mb-4"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-orange-500 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2Z"/><path d="M6 15v-2"/><path d="M12 15V9"/><circle cx="12" cy="6" r="3"/></svg>
                             <h2 class="text-3xl font-bold text-gray-800 mb-2">Tebak Cepat Statistika!</h2>
                             <p class="text-gray-600 mb-6">Uji pemahaman dasarmu dengan 10 soal seru. Siap?</p>
-                            <button onclick="startQuiz('bermain')" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">Mulai Bermain</button>
+                            <button onclick="startQuiz('bermain')" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105 shadow-md">Mulai Bermain</button>
                         </div>
 
                         <div id="bermain-quiz" class="hidden">
                             <div class="flex justify-between items-center mb-6 border-b pb-4">
                                 <span class="font-bold text-gray-500">Soal <span id="bermain-q-num">1</span>/10</span>
-                                <span class="font-bold text-pink-500 bg-pink-100 px-3 py-1 rounded-full text-sm">Skor: <span id="bermain-score">0</span></span>
+                                <span class="font-bold text-orange-600 bg-orange-100 px-3 py-1 rounded-full text-sm border border-orange-200">Skor: <span id="bermain-score">0</span></span>
                             </div>
                             <h3 id="bermain-question" class="text-2xl font-semibold text-gray-800 mb-6 text-center h-20 flex items-center justify-center">Pertanyaan disini</h3>
                             <div id="bermain-options" class="grid grid-cols-2 gap-4">
@@ -205,31 +222,31 @@
                         </div>
 
                         <div id="bermain-result" class="hidden text-center">
-                            <i data-lucide="award" class="w-20 h-20 text-yellow-400 mx-auto mb-4"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-yellow-400 mx-auto mb-4 drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
                             <h2 class="text-3xl font-bold text-gray-800 mb-2">Permainan Selesai!</h2>
-                            <p class="text-xl text-gray-600 mb-6">Skor akhir kamu: <span id="bermain-final-score" class="font-bold text-pink-500 text-2xl">0</span> / 100</p>
-                            <button onclick="resetQuiz('bermain')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-semibold transition mr-2">Main Lagi</button>
-                            <button onclick="navigate('berlatih')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-full font-semibold transition">Lanjut Berlatih</button>
+                            <p class="text-xl text-gray-600 mb-6">Skor akhir kamu: <span id="bermain-final-score" class="font-bold text-orange-500 text-2xl">0</span> / 100</p>
+                            <button onclick="resetQuiz('bermain')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold transition mr-2 shadow">Main Lagi</button>
+                            <button onclick="navigate('berlatih')" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold transition shadow">Lanjut Berlatih</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- BERLATIH PAGE -->
+            <!-- BERLATIH PAGE (Tema Hijau) -->
             <div id="page-berlatih" class="absolute inset-0 flex flex-col hidden fade-in bg-slate-100">
                 <div class="flex-1 flex flex-col items-center justify-center p-8 max-w-4xl mx-auto w-full">
-                    <div class="bg-white w-full rounded-2xl shadow-lg p-8 border-t-8 border-emerald-500">
+                    <div class="bg-white w-full rounded-2xl shadow-lg p-8 border-t-8 border-green-500">
                         <div id="berlatih-intro" class="text-center">
-                            <i data-lucide="brain-circuit" class="w-16 h-16 text-emerald-500 mx-auto mb-4"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-green-500 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0-1.32 4.24 3 3 0 0 0 .34 5.58 2.5 2.5 0 0 0 2.96 3.08 2.5 2.5 0 0 0 4.91.05L12 20V4.5Z"/><path d="M16 8V5c0-1.1.9-2 2-2"/><path d="M12 13h4"/><path d="M12 17h6"/><path d="M21 12h-4"/><path d="M22 18h-2"/><path d="M20 3h2"/></svg>
                             <h2 class="text-3xl font-bold text-gray-800 mb-2">Latihan Analisis Data</h2>
                             <p class="text-gray-600 mb-6">Selesaikan 10 soal evaluasi untuk memantapkan pemahamanmu terhadap materi Data Bivariat dan Regresi Linier.</p>
-                            <button onclick="startQuiz('berlatih')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-md font-bold text-lg transition">Mulai Latihan</button>
+                            <button onclick="startQuiz('berlatih')" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-md font-bold text-lg transition shadow-md">Mulai Latihan</button>
                         </div>
 
                         <div id="berlatih-quiz" class="hidden">
                             <div class="flex justify-between items-center mb-6">
-                                <h3 class="font-bold text-emerald-700 border-b-2 border-emerald-500 pb-1">Evaluasi Kompetensi</h3>
-                                <div class="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded">Progress: <span id="berlatih-q-num">1</span>/10</div>
+                                <h3 class="font-bold text-green-700 border-b-2 border-green-500 pb-1">Evaluasi Kompetensi</h3>
+                                <div class="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded border border-gray-200">Progress: <span id="berlatih-q-num">1</span>/10</div>
                             </div>
                             <div class="min-h-[120px]">
                                 <h3 id="berlatih-question" class="text-lg font-medium text-gray-800 mb-6 leading-relaxed">Pertanyaan disini</h3>
@@ -240,16 +257,16 @@
                         </div>
 
                         <div id="berlatih-result" class="hidden text-center">
-                            <i data-lucide="check-circle" class="w-20 h-20 text-emerald-500 mx-auto mb-4"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-green-500 mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             <h2 class="text-3xl font-bold text-gray-800 mb-2">Latihan Selesai!</h2>
-                            <p class="text-xl text-gray-600 mb-6">Nilai Evaluasi: <span id="berlatih-final-score" class="font-bold text-emerald-600 text-3xl">0</span></p>
-                            <div class="bg-gray-50 p-4 rounded-lg inline-block text-left mb-6">
+                            <p class="text-xl text-gray-600 mb-6">Nilai Evaluasi: <span id="berlatih-final-score" class="font-bold text-green-600 text-3xl">0</span></p>
+                            <div class="bg-gray-50 p-4 rounded-lg inline-block text-left mb-6 border border-gray-200">
                                 <p class="text-sm text-gray-500">Catatan:</p>
-                                <p class="text-sm text-gray-700" id="berlatih-feedback">Terus semangat belajar!</p>
+                                <p class="text-sm text-gray-700 font-medium" id="berlatih-feedback">Terus semangat belajar!</p>
                             </div>
                             <br>
-                            <button onclick="resetQuiz('berlatih')" class="border border-emerald-500 text-emerald-600 hover:bg-emerald-50 px-6 py-2 rounded-md font-semibold transition mr-2">Ulangi Latihan</button>
-                            <button onclick="navigate('materi')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md font-semibold transition">Kembali ke Materi</button>
+                            <button onclick="resetQuiz('berlatih')" class="border-2 border-green-500 text-green-600 hover:bg-green-50 px-6 py-2 rounded-md font-semibold transition mr-2">Ulangi Latihan</button>
+                            <button onclick="navigate('materi')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-semibold transition shadow">Kembali ke Materi</button>
                         </div>
                     </div>
                 </div>
@@ -260,8 +277,8 @@
         <!-- Footer -->
         <footer class="bg-white border-t border-gray-200 p-3 text-center text-xs text-gray-500 shrink-0 z-10 flex justify-between items-center px-6">
             <span>&copy; 2026 Media Interaktif Matematika</span>
-            <span class="font-medium text-indigo-600 flex items-center gap-1">
-                <i data-lucide="user" class="w-3 h-3"></i> Penyusun: Fitri Masfupah, S.Pd, SMAN 3 Pandeglang
+            <span class="font-medium text-blue-600 flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Penyusun: Fitri Masfupah, S.Pd, SMAN 3 Pandeglang
             </span>
         </footer>
 
@@ -269,8 +286,31 @@
 
     <!-- Scripts -->
     <script>
-        // Initialize Icons
-        lucide.createIcons();
+        // --- DETEKSI OFFLINE/ONLINE ---
+        function checkConnection() {
+            const canvaIframe = document.getElementById('canva-iframe');
+            const offlineMsg = document.getElementById('offline-message');
+            
+            if (navigator.onLine) {
+                // Online: Tampilkan Canva, Sembunyikan Pesan Error
+                if(canvaIframe) canvaIframe.classList.remove('hidden');
+                if(offlineMsg) {
+                    offlineMsg.classList.add('hidden');
+                    offlineMsg.classList.remove('flex');
+                }
+            } else {
+                // Offline: Sembunyikan Canva, Tampilkan Pesan Error
+                if(canvaIframe) canvaIframe.classList.add('hidden');
+                if(offlineMsg) {
+                    offlineMsg.classList.remove('hidden');
+                    offlineMsg.classList.add('flex');
+                }
+            }
+        }
+
+        window.addEventListener('load', checkConnection);
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', checkConnection);
 
         // Navigation Logic
         function navigate(pageId) {
@@ -280,7 +320,6 @@
             });
             document.getElementById(`page-${pageId}`).classList.remove('hidden');
             
-            // Reset quizzes if leaving their pages
             if(pageId !== 'bermain') resetQuizUI('bermain');
             if(pageId !== 'berlatih') resetQuizUI('berlatih');
         }
@@ -347,12 +386,12 @@
             
             qData.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.innerHTML = type === 'berlatih' ? `<span class="font-bold mr-2 text-emerald-600">${['A','B','C','D'][idx]}.</span> ${opt}` : opt;
+                btn.innerHTML = type === 'berlatih' ? `<span class="font-bold mr-2 text-green-600">${['A','B','C','D'][idx]}.</span> ${opt}` : opt;
                 
                 if(type === 'bermain') {
-                    btn.className = 'quiz-option bg-white border-2 border-pink-200 hover:border-pink-500 hover:bg-pink-50 text-gray-700 rounded-xl p-4 font-semibold text-lg text-center shadow-sm';
+                    btn.className = 'quiz-option bg-white border-2 border-orange-200 hover:border-orange-500 hover:bg-orange-50 text-gray-700 rounded-xl p-4 font-semibold text-lg text-center shadow-sm';
                 } else {
-                    btn.className = 'quiz-option w-full text-left bg-white border border-gray-300 hover:border-emerald-500 hover:bg-emerald-50 p-4 rounded-lg text-gray-700 transition';
+                    btn.className = 'quiz-option w-full text-left bg-white border-2 border-gray-200 hover:border-green-500 hover:bg-green-50 p-4 rounded-lg text-gray-700 transition';
                 }
                 
                 btn.onclick = () => handleAnswer(idx, btn);
@@ -365,21 +404,24 @@
             const isCorrect = selectedIndex === correctIndex;
             const type = currentQuiz;
 
-            // Disable all buttons
             const buttons = document.getElementById(`${type}-options`).querySelectorAll('button');
-            buttons.forEach(b => { b.disabled = true; b.classList.remove('hover:scale-102', 'hover:bg-pink-50', 'hover:bg-emerald-50'); });
+            buttons.forEach(b => { 
+                b.disabled = true; 
+                b.classList.remove('hover:scale-102', 'hover:bg-orange-50', 'hover:bg-green-50', 'hover:border-orange-500', 'hover:border-green-500'); 
+            });
 
             if(isCorrect) {
-                btnElement.classList.add(type === 'bermain' ? 'bg-green-400' : 'bg-green-100', type === 'bermain' ? 'text-white' : 'border-green-500');
-                if(type === 'bermain') btnElement.classList.replace('border-pink-200', 'border-green-500');
+                btnElement.classList.add('bg-green-500', 'text-white', 'border-green-600');
+                if(type === 'bermain') btnElement.classList.replace('border-orange-200', 'border-green-500');
+                if(type === 'berlatih') btnElement.classList.replace('border-gray-200', 'border-green-500');
                 score += 10;
                 if(type === 'bermain') document.getElementById('bermain-score').innerText = score;
             } else {
-                btnElement.classList.add(type === 'bermain' ? 'bg-red-400' : 'bg-red-100', type === 'bermain' ? 'text-white' : 'border-red-500');
-                if(type === 'bermain') btnElement.classList.replace('border-pink-200', 'border-red-500');
+                btnElement.classList.add('bg-red-500', 'text-white', 'border-red-600');
+                if(type === 'bermain') btnElement.classList.replace('border-orange-200', 'border-red-500');
+                if(type === 'berlatih') btnElement.classList.replace('border-gray-200', 'border-red-500');
                 
-                // Highlight correct
-                buttons[correctIndex].classList.add(type === 'bermain' ? 'bg-green-200' : 'bg-green-100', 'border-green-500');
+                buttons[correctIndex].classList.add('bg-green-100', 'border-green-500', 'text-green-800');
             }
 
             setTimeout(() => {
@@ -389,7 +431,7 @@
                 } else {
                     endQuiz();
                 }
-            }, 1200); // 1.2s delay to show correct answer
+            }, 1200); 
         }
 
         function endQuiz() {
