@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Data dan Peluang - Fase F</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; background-color: #f3f4f6; }
+        
+        /* Custom Scrollbar for Content Areas */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .quiz-option:hover { transform: scale(1.02); }
+        .quiz-option { transition: all 0.2s; cursor: pointer; }
+    </style>
+</head>
+<body class="h-screen w-full flex items-center justify-center p-4">
+
+    <!-- 16:9 Main Container -->
+    <div class="w-full max-w-6xl aspect-video bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col relative border border-gray-200">
+        
+        <!-- Header -->
+        <header class="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-md z-10 shrink-0">
+            <div class="flex items-center gap-3">
+                <i data-lucide="bar-chart-2" class="w-8 h-8"></i>
+                <h1 class="text-xl font-bold">Matematika SMA Kelas XI Fase F</h1>
+            </div>
+            <nav class="flex gap-2">
+                <button onclick="navigate('home')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="home" class="w-4 h-4"></i> Beranda</button>
+                <button onclick="navigate('tujuan')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="target" class="w-4 h-4"></i> Tujuan</button>
+                <button onclick="navigate('materi')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4"></i> Materi</button>
+                <button onclick="navigate('bermain')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="gamepad-2" class="w-4 h-4"></i> Bermain</button>
+                <button onclick="navigate('berlatih')" class="px-4 py-2 hover:bg-indigo-700 rounded-lg transition text-sm font-medium flex items-center gap-2"><i data-lucide="pen-tool" class="w-4 h-4"></i> Berlatih</button>
+            </nav>
+        </header>
+
+        <!-- Content Area -->
+        <main class="flex-1 overflow-hidden relative bg-slate-50">
+            
+            <!-- HOME PAGE -->
+            <div id="page-home" class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 fade-in">
+                <div class="bg-indigo-100 p-6 rounded-full mb-6">
+                    <i data-lucide="pie-chart" class="w-20 h-20 text-indigo-600"></i>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Analisis Data dan Peluang</h2>
+                <p class="text-xl text-gray-600 mb-2">Statistika Data Bivariat, Diagram Pencar & Regresi Linier</p>
+                <p class="text-md text-gray-500 mb-8 max-w-2xl">Mari belajar mengidentifikasi dan memodelkan hubungan antar variabel melalui media interaktif ini.</p>
+                <button onclick="navigate('tujuan')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition transform hover:-translate-y-1">Mulai Belajar</button>
+            </div>
+
+            <!-- TUJUAN PEMBELAJARAN PAGE -->
+            <div id="page-tujuan" class="absolute inset-0 flex flex-col items-center justify-center p-10 hidden fade-in bg-white">
+                <div class="max-w-4xl w-full bg-indigo-50 border-l-4 border-indigo-500 p-8 rounded-r-xl shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="target" class="w-8 h-8 text-indigo-600"></i>
+                        <h2 class="text-3xl font-bold text-gray-800">Tujuan Pembelajaran</h2>
+                    </div>
+                    <ul class="space-y-4 text-lg text-gray-700 list-none">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
+                            <span>Melakukan proses penyelidikan statistika untuk hubungan asosiasi antara dua variabel.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
+                            <span>Mengidentifikasi dan menjelaskan asosiasi antara dua variabel kategorikal (kualitatif) dan antara dua variabel numerikal (kuantitatif).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 shrink-0 mt-1"></i>
+                            <span>Memperkirakan model linear terbaik (best fit) pada data numerikal (kuantitatif).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- URAIAN MATERI PAGE (Split Layout) -->
+            <div id="page-materi" class="absolute inset-0 flex hidden fade-in">
+                <!-- Kiri: Materi (Scrollable) -->
+                <div class="w-1/2 h-full bg-white p-8 overflow-y-auto border-r border-gray-200">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2 border-b pb-4">
+                        <i data-lucide="book-open" class="text-indigo-600"></i> Uraian Materi
+                    </h2>
+                    
+                    <div class="space-y-8">
+                        <section>
+                            <h3 class="text-xl font-bold text-indigo-700 mb-2">1. Statistika Data Bivariat</h3>
+                            <p class="text-gray-700 leading-relaxed mb-2 text-justify">
+                                Data bivariat adalah data yang diamati terdiri atas dua variabel. Tujuan utama mempelajari data bivariat adalah untuk melihat apakah ada hubungan (asosiasi) antara kedua variabel tersebut. 
+                            </p>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li><b>Variabel Bebas (Independen/X):</b> Variabel yang memengaruhi.</li>
+                                <li><b>Variabel Terikat (Dependen/Y):</b> Variabel yang dipengaruhi.</li>
+                            </ul>
+                            <div class="mt-3 text-sm bg-indigo-50 p-3 rounded-lg text-indigo-900 border border-indigo-100">
+                                <b>Catatan Penting:</b> Analisis asosiasi dapat dilakukan antara dua <b>variabel kategorikal/kualitatif</b> (contoh: jenis kelamin dan hobi) maupun antara dua <b>variabel numerikal/kuantitatif</b> (contoh: jam belajar dan nilai ujian).
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-xl font-bold text-indigo-700 mb-2">2. Diagram Pencar (Scatter Plot)</h3>
+                            <p class="text-gray-700 leading-relaxed mb-2 text-justify">
+                                Diagram pencar adalah grafik yang menunjukkan titik-titik koordinat pada sumbu X dan sumbu Y untuk melihat pola hubungan antara dua variabel kuantitatif.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed mb-2">Bentuk Korelasi / Asosiasi:</p>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li><b>Korelasi Positif:</b> Tren titik-titik naik dari kiri bawah ke kanan atas. (X naik, Y naik).</li>
+                                <li><b>Korelasi Negatif:</b> Tren titik-titik turun dari kiri atas ke kanan bawah. (X naik, Y turun).</li>
+                                <li><b>Tidak Ada Korelasi:</b> Titik-titik menyebar acak tanpa pola yang jelas.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3 class="text-xl font-bold text-indigo-700 mb-2">3. Regresi Linier</h3>
+                            <p class="text-gray-700 leading-relaxed mb-2 text-justify">
+                                Regresi linier adalah metode statistik yang digunakan untuk memodelkan hubungan antara dua variabel dengan mencocokkan persamaan linier ke data yang diamati.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed mb-2 text-justify">
+                                Tujuannya adalah menemukan <b>Garis Best Fit</b> (garis kecocokan terbaik), yaitu garis lurus yang mewakili tren kumpulan data pada diagram pencar dengan jarak penyimpangan (residu) terkecil.
+                            </p>
+                            <div class="bg-gray-100 p-4 rounded-lg font-mono text-center text-lg text-indigo-900 border border-gray-300">
+                                <b>Persamaan: </b> ŷ = a + bx
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Keterangan:<br> ŷ = Prediksi variabel terikat, a = Titik potong sumbu y, b = Gradien/kemiringan, x = Variabel bebas.</p>
+                        </section>
+
+                        <!-- FITUR BARU: CONTOH DATA INTERAKTIF -->
+                        <section>
+                            <h3 class="text-xl font-bold text-indigo-700 mb-2">4. Contoh Data Praktik</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4 text-justify text-sm">
+                                Di bawah ini adalah contoh kumpulan data numerikal. Kamu dapat menggunakan data ini untuk dipraktikkan membuat diagram pencar pada simulasi interaktif (Canva) di sebelah kanan!
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-4 shadow-sm">
+                                <div class="overflow-hidden rounded-lg border border-gray-200">
+                                    <table class="w-full text-sm text-left text-gray-500">
+                                        <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                                            <tr>
+                                                <th class="px-4 py-3">No</th>
+                                                <th class="px-4 py-3">X (Lama Belajar, jam)</th>
+                                                <th class="px-4 py-3">Y (Nilai Ujian)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="data-table-body">
+                                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">1</td><td class="px-4 py-2">2</td><td class="px-4 py-2">60</td></tr>
+                                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">2</td><td class="px-4 py-2">3</td><td class="px-4 py-2">65</td></tr>
+                                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">3</td><td class="px-4 py-2">4</td><td class="px-4 py-2">75</td></tr>
+                                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">4</td><td class="px-4 py-2">5</td><td class="px-4 py-2">80</td></tr>
+                                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium">5</td><td class="px-4 py-2">6</td><td class="px-4 py-2">85</td></tr>
+                                            <tr class="bg-gray-50 border-b"><td class="px-4 py-2 font-medium">6</td><td class="px-4 py-2">7</td><td class="px-4 py-2">95</td></tr>
+                                            <tr class="bg-white"><td class="px-4 py-2 font-medium">7</td><td class="px-4 py-2">8</td><td class="px-4 py-2">98</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Kanan: Canva Iframe Placeholder -->
+                <div class="w-1/2 h-full bg-slate-100 p-6 flex flex-col">
+                    <h3 class="text-lg font-semibold text-gray-600 mb-3 text-center">Ilustrasi Interaktif & Visualisasi</h3>
+                    <div class="flex-1 rounded-xl bg-white flex flex-col relative overflow-hidden shadow-md border border-gray-200">
+                        
+                        <!-- Embed Iframe Canva -->
+                        <iframe loading="lazy" class="w-full h-full absolute inset-0 border-none" src="https://www.canva.com/design/DAHN6vV8v2Q/hxp4zaOgIZn4QSp02xqDww/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                        
+                    </div>
+                    
+                    <!-- Credit & Link Asli -->
+                    <div class="text-center mt-3 text-xs text-gray-500">
+                        <a href="https://www.canva.com/design/DAHN6vV8v2Q/hxp4zaOgIZn4QSp02xqDww/view?utm_content=DAHN6vV8v2Q&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener" class="text-indigo-600 font-medium hover:underline">Salinan dari Aktivitas Interaktif Analisis Data Bivariat: Diagram Pencar & Regresi Linear</a> oleh Fitri Masfupah
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEGIATAN BERMAIN PAGE -->
+            <div id="page-bermain" class="absolute inset-0 flex flex-col hidden fade-in bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-indigo-50">
+                <div class="flex-1 flex flex-col items-center justify-center p-8 max-w-4xl mx-auto w-full relative">
+                    <div class="bg-white w-full rounded-2xl shadow-xl p-8 border-t-8 border-pink-400 relative">
+                        <div class="absolute -top-6 right-8 bg-pink-400 text-white px-4 py-1 rounded-full font-bold shadow-md">Game Mode</div>
+                        
+                        <div id="bermain-intro" class="text-center">
+                            <i data-lucide="joystick" class="w-16 h-16 text-pink-500 mx-auto mb-4"></i>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Tebak Cepat Statistika!</h2>
+                            <p class="text-gray-600 mb-6">Uji pemahaman dasarmu dengan 10 soal seru. Siap?</p>
+                            <button onclick="startQuiz('bermain')" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">Mulai Bermain</button>
+                        </div>
+
+                        <div id="bermain-quiz" class="hidden">
+                            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                                <span class="font-bold text-gray-500">Soal <span id="bermain-q-num">1</span>/10</span>
+                                <span class="font-bold text-pink-500 bg-pink-100 px-3 py-1 rounded-full text-sm">Skor: <span id="bermain-score">0</span></span>
+                            </div>
+                            <h3 id="bermain-question" class="text-2xl font-semibold text-gray-800 mb-6 text-center h-20 flex items-center justify-center">Pertanyaan disini</h3>
+                            <div id="bermain-options" class="grid grid-cols-2 gap-4">
+                                <!-- Options injected by JS -->
+                            </div>
+                        </div>
+
+                        <div id="bermain-result" class="hidden text-center">
+                            <i data-lucide="award" class="w-20 h-20 text-yellow-400 mx-auto mb-4"></i>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Permainan Selesai!</h2>
+                            <p class="text-xl text-gray-600 mb-6">Skor akhir kamu: <span id="bermain-final-score" class="font-bold text-pink-500 text-2xl">0</span> / 100</p>
+                            <button onclick="resetQuiz('bermain')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-semibold transition mr-2">Main Lagi</button>
+                            <button onclick="navigate('berlatih')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-full font-semibold transition">Lanjut Berlatih</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BERLATIH PAGE -->
+            <div id="page-berlatih" class="absolute inset-0 flex flex-col hidden fade-in bg-slate-100">
+                <div class="flex-1 flex flex-col items-center justify-center p-8 max-w-4xl mx-auto w-full">
+                    <div class="bg-white w-full rounded-2xl shadow-lg p-8 border-t-8 border-emerald-500">
+                        <div id="berlatih-intro" class="text-center">
+                            <i data-lucide="brain-circuit" class="w-16 h-16 text-emerald-500 mx-auto mb-4"></i>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Latihan Analisis Data</h2>
+                            <p class="text-gray-600 mb-6">Selesaikan 10 soal evaluasi untuk memantapkan pemahamanmu terhadap materi Data Bivariat dan Regresi Linier.</p>
+                            <button onclick="startQuiz('berlatih')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-md font-bold text-lg transition">Mulai Latihan</button>
+                        </div>
+
+                        <div id="berlatih-quiz" class="hidden">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-bold text-emerald-700 border-b-2 border-emerald-500 pb-1">Evaluasi Kompetensi</h3>
+                                <div class="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded">Progress: <span id="berlatih-q-num">1</span>/10</div>
+                            </div>
+                            <div class="min-h-[120px]">
+                                <h3 id="berlatih-question" class="text-lg font-medium text-gray-800 mb-6 leading-relaxed">Pertanyaan disini</h3>
+                            </div>
+                            <div id="berlatih-options" class="flex flex-col gap-3">
+                                <!-- Options injected by JS -->
+                            </div>
+                        </div>
+
+                        <div id="berlatih-result" class="hidden text-center">
+                            <i data-lucide="check-circle" class="w-20 h-20 text-emerald-500 mx-auto mb-4"></i>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Latihan Selesai!</h2>
+                            <p class="text-xl text-gray-600 mb-6">Nilai Evaluasi: <span id="berlatih-final-score" class="font-bold text-emerald-600 text-3xl">0</span></p>
+                            <div class="bg-gray-50 p-4 rounded-lg inline-block text-left mb-6">
+                                <p class="text-sm text-gray-500">Catatan:</p>
+                                <p class="text-sm text-gray-700" id="berlatih-feedback">Terus semangat belajar!</p>
+                            </div>
+                            <br>
+                            <button onclick="resetQuiz('berlatih')" class="border border-emerald-500 text-emerald-600 hover:bg-emerald-50 px-6 py-2 rounded-md font-semibold transition mr-2">Ulangi Latihan</button>
+                            <button onclick="navigate('materi')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md font-semibold transition">Kembali ke Materi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 p-3 text-center text-xs text-gray-500 shrink-0 z-10 flex justify-between items-center px-6">
+            <span>&copy; 2026 Media Interaktif Matematika</span>
+            <span class="font-medium text-indigo-600 flex items-center gap-1">
+                <i data-lucide="user" class="w-3 h-3"></i> Penyusun: Fitri Masfupah, S.Pd, SMAN 3 Pandeglang
+            </span>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navigation Logic
+        function navigate(pageId) {
+            const pages = ['home', 'tujuan', 'materi', 'bermain', 'berlatih'];
+            pages.forEach(p => {
+                document.getElementById(`page-${p}`).classList.add('hidden');
+            });
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+            
+            // Reset quizzes if leaving their pages
+            if(pageId !== 'bermain') resetQuizUI('bermain');
+            if(pageId !== 'berlatih') resetQuizUI('berlatih');
+        }
+
+        // --- QUIZ DATA ---
+        const dataBermain = [
+            { q: "Apa nama grafik yang digunakan untuk data bivariat?", options: ["Histogram", "Diagram Lingkaran", "Diagram Pencar", "Diagram Batang"], a: 2 },
+            { q: "Data bivariat melibatkan berapa variabel?", options: ["1 variabel", "2 variabel", "3 variabel", "Tidak ada"], a: 1 },
+            { q: "Jika titik-titik naik dari kiri ke kanan, korelasinya adalah?", options: ["Positif", "Negatif", "Nol", "Sempurna"], a: 0 },
+            { q: "Variabel Y biasanya disebut sebagai variabel?", options: ["Bebas", "Terikat", "Konstan", "Acak"], a: 1 },
+            { q: "Garis lurus yang paling pas mewakili data disebut?", options: ["Garis Lengkung", "Garis Singgung", "Garis Best Fit", "Garis Normal"], a: 2 },
+            { q: "Jika X naik dan Y turun, maka korelasinya?", options: ["Positif", "Negatif", "Tidak ada", "Tetap"], a: 1 },
+            { q: "Variabel yang mempengaruhi (prediktor) disebut variabel?", options: ["Terikat", "Bebas", "Respons", "Sekunder"], a: 1 },
+            { q: "Jika titik-titik menyebar acak tanpa pola, artinya?", options: ["Korelasi Kuat", "Korelasi Negatif", "Tidak ada korelasi", "Garis Lurus"], a: 2 },
+            { q: "Tujuan utama membuat diagram pencar adalah?", options: ["Menghitung rata-rata", "Melihat pola/hubungan", "Mencari nilai tengah", "Membuat tabel"], a: 1 },
+            { q: "Simbol persamaan regresi linier sederhana umumnya adalah?", options: ["y = ax^2 + b", "y = a + bx", "y = a/x", "x = y + a"], a: 1 }
+        ];
+
+        const dataBerlatih = [
+            { q: "Dalam suatu penelitian 'Pengaruh jumlah jam belajar terhadap nilai ujian Matematika', manakah yang merupakan variabel bebas?", options: ["Nilai Ujian Matematika", "Jumlah Siswa", "Jumlah Jam Belajar", "Tingkat Kesulitan Soal"], a: 2 },
+            { q: "Sebuah diagram pencar menunjukkan titik-titik yang sangat rapat dan membentuk pola garis lurus menurun ke kanan. Kesimpulan yang tepat adalah...", options: ["Korelasi positif kuat", "Korelasi negatif kuat", "Korelasi positif lemah", "Korelasi negatif lemah"], a: 1 },
+            { q: "Diberikan persamaan regresi ŷ = 10 + 2,5x. Jika nilai x adalah 4, berapakah prediksi nilai y?", options: ["12,5", "15", "17,5", "20"], a: 3 },
+            { q: "Data mengenai tinggi badan (cm) dan ukuran sepatu (cm) seseorang merupakan contoh dari...", options: ["Data Kualitatif Tunggal", "Data Bivariat Kuantitatif", "Data Bivariat Kategorikal", "Data Diskrit"], a: 1 },
+            { q: "Garis 'Best Fit' (garis regresi) pada diagram pencar dibuat dengan prinsip...", options: ["Menghubungkan titik pertama dan terakhir", "Meminimalkan jumlah kuadrat jarak antara titik data aktual dengan garis", "Membagi dua jumlah titik di atas dan di bawah", "Mengabaikan data pencilan sama sekali"], a: 1 },
+            { q: "Jika nilai gradien (b) pada persamaan regresi linier ŷ = a + bx bernilai negatif, maka...", options: ["Terdapat korelasi positif antar variabel", "Terdapat korelasi negatif antar variabel", "Tidak ada hubungan antar variabel", "Garis akan mendatar sempurna"], a: 1 },
+            { q: "Penyajian data untuk mengidentifikasi asosiasi antara dua variabel KATEGORIKAL (kualitatif) paling tepat menggunakan...", options: ["Diagram Pencar", "Tabel Kontingensi (Tabel Silang)", "Garis Regresi", "Histogram"], a: 1 },
+            { q: "Manakah dari pasangan variabel berikut yang kemungkinan besar tidak memiliki korelasi?", options: ["Lama berolahraga dan jumlah kalori terbakar", "Tinggi badan dan warna baju favorit", "Suhu udara dan penjualan es krim", "Pendapatan dan pengeluaran konsumsi"], a: 1 },
+            { q: "Pada persamaan regresi ŷ = a + bx, komponen 'a' merepresentasikan...", options: ["Kemiringan garis", "Variabel Bebas", "Nilai ŷ ketika x = 0 (Titik potong sumbu Y)", "Koefisien korelasi"], a: 2 },
+            { q: "Mengapa penting melakukan proses penyelidikan statistika sebelum menarik kesimpulan hubungan sebab-akibat dari dua variabel?", options: ["Korelasi kuat pada diagram pencar selalu membuktikan sebab-akibat.", "Karena korelasi tidak selalu berarti sebab-akibat (causation); butuh eksperimen lebih lanjut.", "Agar kita bisa langsung membuat persamaan linier.", "Supaya diagram pencar terlihat lebih rapi dan linier."], a: 1 }
+        ];
+
+        // --- QUIZ STATE & LOGIC ---
+        let currentQuiz = '';
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+
+        function startQuiz(type) {
+            currentQuiz = type;
+            currentQuestions = type === 'bermain' ? [...dataBermain].sort(() => Math.random() - 0.5) : [...dataBerlatih];
+            currentIndex = 0;
+            score = 0;
+
+            document.getElementById(`${type}-intro`).classList.add('hidden');
+            document.getElementById(`${type}-result`).classList.add('hidden');
+            document.getElementById(`${type}-quiz`).classList.remove('hidden');
+            
+            if(type === 'bermain') {
+                document.getElementById('bermain-score').innerText = '0';
+            }
+            
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qData = currentQuestions[currentIndex];
+            const type = currentQuiz;
+            
+            document.getElementById(`${type}-q-num`).innerText = currentIndex + 1;
+            document.getElementById(`${type}-question`).innerText = qData.q;
+            
+            const optionsContainer = document.getElementById(`${type}-options`);
+            optionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.innerHTML = type === 'berlatih' ? `<span class="font-bold mr-2 text-emerald-600">${['A','B','C','D'][idx]}.</span> ${opt}` : opt;
+                
+                if(type === 'bermain') {
+                    btn.className = 'quiz-option bg-white border-2 border-pink-200 hover:border-pink-500 hover:bg-pink-50 text-gray-700 rounded-xl p-4 font-semibold text-lg text-center shadow-sm';
+                } else {
+                    btn.className = 'quiz-option w-full text-left bg-white border border-gray-300 hover:border-emerald-500 hover:bg-emerald-50 p-4 rounded-lg text-gray-700 transition';
+                }
+                
+                btn.onclick = () => handleAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(selectedIndex, btnElement) {
+            const correctIndex = currentQuestions[currentIndex].a;
+            const isCorrect = selectedIndex === correctIndex;
+            const type = currentQuiz;
+
+            // Disable all buttons
+            const buttons = document.getElementById(`${type}-options`).querySelectorAll('button');
+            buttons.forEach(b => { b.disabled = true; b.classList.remove('hover:scale-102', 'hover:bg-pink-50', 'hover:bg-emerald-50'); });
+
+            if(isCorrect) {
+                btnElement.classList.add(type === 'bermain' ? 'bg-green-400' : 'bg-green-100', type === 'bermain' ? 'text-white' : 'border-green-500');
+                if(type === 'bermain') btnElement.classList.replace('border-pink-200', 'border-green-500');
+                score += 10;
+                if(type === 'bermain') document.getElementById('bermain-score').innerText = score;
+            } else {
+                btnElement.classList.add(type === 'bermain' ? 'bg-red-400' : 'bg-red-100', type === 'bermain' ? 'text-white' : 'border-red-500');
+                if(type === 'bermain') btnElement.classList.replace('border-pink-200', 'border-red-500');
+                
+                // Highlight correct
+                buttons[correctIndex].classList.add(type === 'bermain' ? 'bg-green-200' : 'bg-green-100', 'border-green-500');
+            }
+
+            setTimeout(() => {
+                currentIndex++;
+                if (currentIndex < currentQuestions.length) {
+                    renderQuestion();
+                } else {
+                    endQuiz();
+                }
+            }, 1200); // 1.2s delay to show correct answer
+        }
+
+        function endQuiz() {
+            const type = currentQuiz;
+            document.getElementById(`${type}-quiz`).classList.add('hidden');
+            document.getElementById(`${type}-result`).classList.remove('hidden');
+            document.getElementById(`${type}-final-score`).innerText = score;
+
+            if(type === 'berlatih') {
+                let feedback = "";
+                if(score >= 80) feedback = "Luar biasa! Pemahamanmu tentang analisis bivariat sangat kuat.";
+                else if(score >= 60) feedback = "Bagus! Coba ulangi baca materi regresi linier untuk hasil yang sempurna.";
+                else feedback = "Jangan menyerah. Mari baca kembali Uraian Materi pelan-pelan ya!";
+                document.getElementById('berlatih-feedback').innerText = feedback;
+            }
+        }
+
+        function resetQuiz(type) {
+            startQuiz(type);
+        }
+
+        function resetQuizUI(type) {
+            document.getElementById(`${type}-intro`).classList.remove('hidden');
+            document.getElementById(`${type}-quiz`).classList.add('hidden');
+            document.getElementById(`${type}-result`).classList.add('hidden');
+        }
+
+        // Set default page on load
+        navigate('home');
+
+    </script>
+</body>
+</html>
